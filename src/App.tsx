@@ -1,11 +1,14 @@
 // import Alert from "./components/Alert";
+import { useState } from "react";
 import Buttons from "./components/Buttons";
+import ShowAlert from "./components/ShowAlert";
 
 function App() {
   // const items = ["San Franciso", "New York", "London", "Tokyo", "Paris"];
   // const handleSelectedItem = (item: string) => {
   //   console.log(item);
   // };
+  const [showAlert, setShowAlert] = useState(false);
 
   return (
     <div>
@@ -16,8 +19,21 @@ function App() {
       /> */}
 
       {/* <Alert>Hellow World Da</Alert> */}
-      <Buttons color="success" onClick={() => console.log("Clicked")}>
-        Hello World
+      {showAlert && (
+        <ShowAlert
+          onClose={() => {
+            setShowAlert(false);
+          }}
+        ></ShowAlert>
+      )}
+
+      <Buttons
+        color="success"
+        onClick={() => {
+          setShowAlert(true);
+        }}
+      >
+        <span>Click</span>
       </Buttons>
     </div>
   );
